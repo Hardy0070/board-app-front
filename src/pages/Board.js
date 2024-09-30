@@ -15,7 +15,7 @@ const Board = () => {
   const findById = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://223.130.132.182:9090/boards/${id}`,
+        `http://223.130.150.189:9090/boards/${id}`,
         {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("ACCESS_TOKEN")}`,
@@ -36,7 +36,7 @@ const Board = () => {
   const deleteById = useCallback(async () => {
     try {
       const response = await axios.delete(
-        `http://223.130.132.182:9090/boards/${id}`,
+        `http://223.130.150.189:9090/boards/${id}`,
         {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("ACCESS_TOKEN")}`,

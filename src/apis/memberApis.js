@@ -12,7 +12,7 @@ export const join = createAsyncThunk(
     // member 객체로 join 시킴
     try {
       const response = await axios.post(
-        "http://223.130.132.182:9090/members/join",
+        "http://223.130.150.189:9090/members/join",
         member
       ); // data는 membere
 
@@ -31,7 +31,7 @@ export const login = createAsyncThunk(
   async (member, thunkApi) => {
     try {
       const response = await axios.post(
-        "http://223.130.132.182:9090/members/login",
+        "http://223.130.150.189:9090/members/login",
         member
       );
 
@@ -50,7 +50,7 @@ export const logout = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const response = await axios.get(
-        `http://223.130.132.182:9090/members/logout`,
+        `http://223.130.150.189:9090/members/logout`,
         {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("ACCESS_TOKEN")}`,

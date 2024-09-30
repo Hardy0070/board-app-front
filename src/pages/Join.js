@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import {Button, Container, Grid, TextField, Typography} from "@mui/material";
+import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { join } from "../apis/memberApis";
@@ -20,21 +20,26 @@ const Join = () => {
 
   const dispatch = useDispatch();
 
-  const changeTextField = useCallback((e) => {
+  const changeTextField = useCallback(
+    (e) => {
       setJoinForm({
         ...joinForm,
-        [e.target.name]: e.target.value
+        [e.target.name]: e.target.value,
       });
 
       if (e.target.name === "username") {
         setUsernameChk(false);
-        document.querySelector("#username-check-btn").removeAttribute("disabled");
+        document
+          .querySelector("#username-check-btn")
+          .removeAttribute("disabled");
         return;
       }
 
       if (e.target.name === "nickname") {
         setUsernameChk(false);
-        document.querySelector("#nickname-check-btn").removeAttribute("disabled");
+        document
+          .querySelector("#nickname-check-btn")
+          .removeAttribute("disabled");
         return;
       }
 
@@ -80,7 +85,7 @@ const Join = () => {
       }
 
       const response = await axios.post(
-        "http://223.130.132.182:9090/members/username-check",
+        "http://223.130.150.189:9090/members/username-check",
         {
           username: joinForm.username,
         }
@@ -97,7 +102,9 @@ const Join = () => {
             `${joinForm.username}은 사용 가능한 아이디입니다. 사용하시겠습니까?`
           )
         ) {
-          document.querySelector("#username-check-btn").setAttribute("disabled", true);
+          document
+            .querySelector("#username-check-btn")
+            .setAttribute("disabled", true);
           setUsernameChk(true);
           return;
         }
@@ -111,13 +118,13 @@ const Join = () => {
   const nicknameCheck = useCallback(async () => {
     try {
       if (joinForm.nickname === "") {
-        alert('닉네임을 입력하세요.');
-        document.querySelector('#nickname').focus();
+        alert("닉네임을 입력하세요.");
+        document.querySelector("#nickname").focus();
         return;
       }
 
       const response = await axios.post(
-        "http://223.130.132.182:9090/members/nickname-check",
+        "http://223.130.150.189:9090/members/nickname-check",
         {
           nickname: joinForm.nickname,
         }
@@ -164,7 +171,8 @@ const Join = () => {
     return;
   }, [validatePassword]);
 
-  const handleJoin = useCallback((e) => {
+  const handleJoin = useCallback(
+    (e) => {
       e.preventDefault();
 
       if (!usernameChk) {
