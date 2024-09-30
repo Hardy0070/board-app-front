@@ -1,12 +1,5 @@
 import React, { useCallback, useState } from "react";
-import {
-  Button,
-  Container,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-} from "@mui/material";
+import {Button, Container, Grid, TextField, Typography} from "@mui/material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { join } from "../apis/memberApis";
@@ -20,7 +13,6 @@ const Join = () => {
     email: "",
     tel: "",
   });
-
   const [usernameChk, setUsernameChk] = useState(false);
   const [passwordValidate, setPasswordValidate] = useState(false);
   const [passwordChk, setPasswordChk] = useState(false);
@@ -28,26 +20,21 @@ const Join = () => {
 
   const dispatch = useDispatch();
 
-  const changeTextField = useCallback(
-    (e) => {
+  const changeTextField = useCallback((e) => {
       setJoinForm({
         ...joinForm,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       });
 
       if (e.target.name === "username") {
         setUsernameChk(false);
-        document
-          .querySelector("#username-check-btn")
-          .removeAttribute("disabled");
+        document.querySelector("#username-check-btn").removeAttribute("disabled");
         return;
       }
 
       if (e.target.name === "nickname") {
         setUsernameChk(false);
-        document
-          .querySelector("#nickname-check-btn")
-          .removeAttribute("disabled");
+        document.querySelector("#nickname-check-btn").removeAttribute("disabled");
         return;
       }
 
@@ -110,15 +97,13 @@ const Join = () => {
             `${joinForm.username}은 사용 가능한 아이디입니다. 사용하시겠습니까?`
           )
         ) {
-          document
-            .querySelector("#username-check-btn")
-            .setAttribute("disabled", true);
+          document.querySelector("#username-check-btn").setAttribute("disabled", true);
           setUsernameChk(true);
-          console.log(usernameChk);
           return;
         }
       }
     } catch (e) {
+      console.log(e);
       alert("에러가 발생했습니다.");
     }
   }, [joinForm.username]);
@@ -126,7 +111,8 @@ const Join = () => {
   const nicknameCheck = useCallback(async () => {
     try {
       if (joinForm.nickname === "") {
-        document.querySelector("#nickname").focus();
+        alert('닉네임을 입력하세요.');
+        document.querySelector('#nickname').focus();
         return;
       }
 
@@ -178,8 +164,7 @@ const Join = () => {
     return;
   }, [validatePassword]);
 
-  const handleJoin = useCallback(
-    (e) => {
+  const handleJoin = useCallback((e) => {
       e.preventDefault();
 
       if (!usernameChk) {
