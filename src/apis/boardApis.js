@@ -6,7 +6,7 @@ export const post = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const response = await axios.post(
-        "http://223.130.150.189:9090/boards",
+        "http://223.130.132.182:9090/boards",
         formData,
         {
           headers: {
@@ -27,7 +27,7 @@ export const getBoards = createAsyncThunk(
   "boards/getBoards",
   async (searchObj, thunkApi) => {
     try {
-      const response = await axios.get("http://223.130.150.189:9090/boards", {
+      const response = await axios.get("http://223.130.132.182:9090/boards", {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("ACCESS_TOKEN")}`,
         },

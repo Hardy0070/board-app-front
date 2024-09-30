@@ -93,7 +93,7 @@ const Join = () => {
       }
 
       const response = await axios.post(
-        "http://223.130.150.189:9090/members/username-check",
+        "http://223.130.132.182:9090/members/username-check",
         {
           username: joinForm.username,
         }
@@ -131,7 +131,7 @@ const Join = () => {
       }
 
       const response = await axios.post(
-        "http://223.130.150.189:9090/members/nickname-check",
+        "http://223.130.132.182:9090/members/nickname-check",
         {
           nickname: joinForm.nickname,
         }
